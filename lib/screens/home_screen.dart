@@ -47,19 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       children: [
                         IconButton(
-                            onPressed: () async{
+                            onPressed: () async {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => EditTodoScreen(
                                           name: item['title'],
                                           description: item['description'],
-                                          id: id))).then((value) async{
-                                            if (value == true) {
-               await  fetchTodo();
-              }
-                                          });
-                            },
+                                          id: id))).then((value) async {
+                                if (value == true) {
+                                  await fetchTodo();
+                                }
+                              });
+                            }, 
                             icon: Icon(Icons.edit)),
                         IconButton(
                             onPressed: () {
@@ -81,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 fetchTodo();
               }
             });
+            
           },
           label: Text('Add Todo'),
           backgroundColor: Color.fromARGB(255, 0, 150, 112),
@@ -101,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
       print('loding failed');
     }
   }
+
 
   Future<void> deleteById(String id) async {
     // remove the item
